@@ -54,6 +54,11 @@
       </section>
       <section>
         <h2>HEX to others</h2>
+        <!-- Input HEX -->
+        <input type="text" id="colors.hex" />
+        <!-- HEX conversions -->
+        <p>RGB: <span id="colors.hex.rgb"></span></p>
+        <p>GML: <span id="colors.hex.gml"></span></p>
       </section>
       <section>
         <h2>GML to others</h2>
@@ -81,6 +86,11 @@
 
       /** @type {RGBColor} */
       const globalRgb = { r: 0, g: 0, b: 0 };
+
+      /* hex input */
+      const hexInput = document.getElementById("colors.hex");
+      const hexRGB = document.getElementById("colors.hex.rgb");
+      const hexGML = document.getElementById("colors.hex.gml");
 
       /* Types */
       /** @typedef RGBColor
@@ -163,6 +173,20 @@
         rgbGML.innerText = rgbToGML(globalRgb);
       });
 
+      // hex input
+      hexInput.addEventListener("input", (event) => {
+        /** @type {string} */
+        let hex = event.target.value;
+        // add # if not present
+        if (!hex.startsWith("#")) {
+          hex = `#${hex}`;
+        }
+        const rgb = hexToRGB(hex);
+        const gml = hexToGML(hex);
+
+        hexRGB.innerText = rgbToString(rgb);
+        hexGML.innerText = gml;
+      });
       // End of changing the javascript for the page
     </script>
   </body>

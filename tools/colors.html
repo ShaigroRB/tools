@@ -62,6 +62,11 @@
       </section>
       <section>
         <h2>GML to others</h2>
+        <!-- Input GML -->
+        <input type="text" id="colors.gml" />
+        <!-- GML conversions -->
+        <p>RGB: <span id="colors.gml.rgb"></span></p>
+        <p>HEX: <span id="colors.gml.hex"></span></p>
       </section>
       <!-- End of changing this part -->
     </section>
@@ -92,6 +97,11 @@
       const hexRGB = document.getElementById("colors.hex.rgb");
       const hexGML = document.getElementById("colors.hex.gml");
 
+      /* gml input */
+      const gmlInput = document.getElementById("colors.gml");
+      const gmlRGB = document.getElementById("colors.gml.rgb");
+      const gmlHEX = document.getElementById("colors.gml.hex");
+
       /* Types */
       /** @typedef RGBColor
        * @type {{r: number, g: number, b: number}
@@ -99,13 +109,13 @@
 
       /* Functions */
       /**
-       * @param {string} gml
+       * @param {number} gml
        * @returns {RGBColor}
        */
       function gmlToRGB(gml) {
         const r = gml % 256;
-        const g = floor(gml / 256) % 256;
-        const b = floor(gml / 65536);
+        const g = Math.floor(gml / 256) % 256;
+        const b = Math.floor(gml / 65536);
         return { r, g, b };
       }
       /** @param {RGBColor} rgb */
@@ -140,6 +150,10 @@
           .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
       }
 
+      /** @param {number} gml */
+      function gmlToHex(gml) {
+        return rgbToHex(gmlToRGB(gml));
+      }
       /* Event listeners */
       // color picker
       colorPicker.addEventListener("input", (event) => {
@@ -186,6 +200,16 @@
 
         hexRGB.innerText = rgbToString(rgb);
         hexGML.innerText = gml;
+      });
+
+      // gml input
+      gmlInput.addEventListener("input", (event) => {
+        const gml = parseInt(event.target.value);
+        const rgb = gmlToRGB(gml);
+        const hex = gmlToHex(gml);
+
+        gmlRGB.innerText = rgbToString(rgb);
+        gmlHEX.innerText = hex;
       });
       // End of changing the javascript for the page
     </script>

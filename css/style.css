@@ -1,0 +1,68 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  min-height: 96vh;
+  max-width: initial;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+.container {
+  display: grid;
+  grid-template: "navbar content" 1fr "footer footer" 2rem/1fr 5fr;
+}
+
+.navbar {
+  grid-area: navbar;
+  padding-top: 1rem;
+  padding-left: 1rem;
+}
+
+.content {
+  grid-area: content;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+i {
+  font-size: small;
+}
+
+.flex, .vstack, .hstack {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.hstack {
+  flex-direction: row;
+}
+
+.vstack {
+  flex-direction: column;
+}/*# sourceMappingURL=style.css.map */

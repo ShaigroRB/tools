@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--  Change the title -->
+    <title>Colors tool</title>
+    <!-- End of changing the title -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="container">
+    <nav class="navbar">
+      <header><a href="/index.html">Tools</a></header>
+      <ul>
+        <li><a href="/tools/colors.html">Colors</a></li>
+        <li></li>
+      </ul>
+    </nav>
+    <section class="content">
+      <!-- Change this part -->
+      <section>
+        <h2>Color picker</h2>
+        <div>
+          <input type="color" id="colors.colorpicker" />
+          <p>RGB: <span id="colors.colorpicker.rgb"></span></p>
+          <p>HEX: <span id="colors.colorpicker.hex"></span></p>
+          <p>GML: <span id="colors.colorpicker.gml"></span></p>
+        </div>
+      </section>
+      <section>
+        <h2>RGB to others</h2>
+        <!-- Input RGB -->
+        <div class="hstack">
+          <div class="hstack">
+            <label for="colors.rgb.r">R:</label>
+            <input type="text" id="colors.rgb.r" />
+          </div>
+          <div class="hstack">
+            <label for="colors.rgb.g">G:</label>
+            <input type="text" id="colors.rgb.g" />
+          </div>
+          <div class="hstack">
+            <label for="colors.rgb.b">B:</label>
+            <input type="text" id="colors.rgb.b" />
+          </div>
+        </div>
+        <!-- RGB conversions -->
+        <p>HEX: <span id="colors.rgb.hex"></span></p>
+        <p>GML: <span id="colors.rgb.gml"></span></p>
+      </section>
+      <section>
+        <h2>HEX to others</h2>
+      </section>
+      <section>
+        <h2>GML to others</h2>
+      </section>
+      <!-- End of changing this part -->
+    </section>
+
+    <footer class="footer"></footer>
+
+    <script>
+      // Change the javascript for the page
+      /* Retrieve HTML elements and define variables */
+      /* color picker */
+      const colorPicker = document.getElementById("colors.colorpicker");
+      const colorPickerRGB = document.getElementById("colors.colorpicker.rgb");
+      const colorPickerHEX = document.getElementById("colors.colorpicker.hex");
+      const colorPickerGML = document.getElementById("colors.colorpicker.gml");
+
+      /* rgb input */
+      const rgbRInput = document.getElementById("colors.rgb.r");
+      const rgbGInput = document.getElementById("colors.rgb.g");
+      const rgbBInput = document.getElementById("colors.rgb.b");
+      const rgbHEX = document.getElementById("colors.rgb.hex");
+      const rgbGML = document.getElementById("colors.rgb.gml");
+
+      /** @type {RGBColor} */
+      const globalRgb = { r: 0, g: 0, b: 0 };
+
+      /* Types */
+      /** @typedef RGBColor
+       * @type {{r: number, g: number, b: number}
+       */
+
+      /* Functions */
+      /**
+       * @param {string} gml
+       * @returns {RGBColor}
+       */
+      function gmlToRGB(gml) {
+        const r = gml % 256;
+        const g = floor(gml / 256) % 256;
+        const b = floor(gml / 65536);
+        return { r, g, b };
+      }
+      /** @param {RGBColor} rgb */
+      function rgbToGML({ r, g, b }) {
+        return r + g * 256 + b * 65536;
+      }
+      /**
+       * @param {string} hex
+       * @returns {RGBColor}
+       */
+      function hexToRGB(hex) {
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        return { r, g, b };
+      }
+      /** @param {string} hex */
+      function hexToGML(hex) {
+        const rgb = hexToRGB(hex);
+        return rgbToGML(rgb);
+      }
+
+      /** @param {RGBColor} rgb */
+      function rgbToString({ r, g, b }) {
+        return `rgb(${r}, ${g}, ${b})`;
+      }
+
+      /** @param {RGBColor} rgb */
+      function rgbToHex({ r, g, b }) {
+        return `#${r.toString(16).padStart(2, "0")}${g
+          .toString(16)
+          .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+      }
+
+      /* Event listeners */
+      // color picker
+      colorPicker.addEventListener("input", (event) => {
+        /** @type {string} */
+        const hex = event.target.value;
+        const rgb = hexToRGB(hex);
+        const gml = hexToGML(hex);
+
+        colorPickerRGB.innerText = rgbToString(rgb);
+        colorPickerHEX.innerText = hex;
+        colorPickerGML.innerText = gml;
+      });
+
+      // rgb input
+      rgbRInput.addEventListener("input", (event) => {
+        const r = parseInt(event.target.value);
+        globalRgb.r = r;
+        rgbHEX.innerText = rgbToHex(globalRgb);
+        rgbGML.innerText = rgbToGML(globalRgb);
+      });
+      rgbGInput.addEventListener("input", (event) => {
+        const g = parseInt(event.target.value);
+        globalRgb.g = g;
+        rgbHEX.innerText = rgbToHex(globalRgb);
+        rgbGML.innerText = rgbToGML(globalRgb);
+      });
+      rgbBInput.addEventListener("input", (event) => {
+        const b = parseInt(event.target.value);
+        globalRgb.b = b;
+        rgbHEX.innerText = rgbToHex(globalRgb);
+        rgbGML.innerText = rgbToGML(globalRgb);
+      });
+
+      // End of changing the javascript for the page
+    </script>
+  </body>
+</html>

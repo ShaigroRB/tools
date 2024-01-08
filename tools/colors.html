@@ -31,7 +31,10 @@
       <section>
         <h2>Color picker</h2>
         <div>
-          <input type="color" id="colors.colorpicker" />
+          <div class="hstack vcenter">
+            <label for="colors.colorpicker">Pick a color:</label>
+            <input type="color" id="colors.colorpicker" />
+          </div>
           <p>
             RGB: <span id="colors.colorpicker.rgb"></span>
             <t-copy target-id="colors.colorpicker.rgb"></t-copy>
@@ -50,15 +53,15 @@
         <h2>RGB to others</h2>
         <!-- Input RGB -->
         <div class="hstack">
-          <div class="hstack">
+          <div class="hstack vcenter">
             <label for="colors.rgb.r">R:</label>
             <input type="text" id="colors.rgb.r" />
           </div>
-          <div class="hstack">
+          <div class="hstack vcenter">
             <label for="colors.rgb.g">G:</label>
             <input type="text" id="colors.rgb.g" />
           </div>
-          <div class="hstack">
+          <div class="hstack vcenter">
             <label for="colors.rgb.b">B:</label>
             <input type="text" id="colors.rgb.b" />
           </div>
@@ -76,7 +79,10 @@
       <section>
         <h2>HEX to others</h2>
         <!-- Input HEX -->
-        <input type="text" id="colors.hex" />
+        <div class="hstack vcenter">
+          <label for="colors.hex">HEX:</label>
+          <input type="text" id="colors.hex" />
+        </div>
         <!-- HEX conversions -->
         <p>
           RGB: <span id="colors.hex.rgb"></span>
@@ -90,7 +96,10 @@
       <section>
         <h2>GML to others</h2>
         <!-- Input GML -->
-        <input type="text" id="colors.gml" />
+        <div class="hstack vcenter">
+          <label for="colors.gml">GML:</label>
+          <input type="text" id="colors.gml" />
+        </div>
         <!-- GML conversions -->
         <p>
           RGB: <span id="colors.gml.rgb"></span>

@@ -43,7 +43,7 @@ class TCopyButton extends HTMLElement {
     }
   </style>
   <div class="hstack">
-    <button class="copy-button"><i class="gg-copy"></i></button>
+    <button class="copy-button" aria-label="Copy text"><i class="gg-copy"></i></button>
     <div class="notification">✅</div>
   </div>
 `;

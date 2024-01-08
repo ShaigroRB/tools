@@ -11,6 +11,12 @@
       href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
     />
     <link rel="stylesheet" href="../css/style.css" />
+    <script src="../custom.js"></script>
+    <style>
+      span + t-copy {
+        display: inline-block;
+      }
+    </style>
   </head>
   <body class="container">
     <nav class="navbar">
@@ -26,9 +32,18 @@
         <h2>Color picker</h2>
         <div>
           <input type="color" id="colors.colorpicker" />
-          <p>RGB: <span id="colors.colorpicker.rgb"></span></p>
-          <p>HEX: <span id="colors.colorpicker.hex"></span></p>
-          <p>GML: <span id="colors.colorpicker.gml"></span></p>
+          <p>
+            RGB: <span id="colors.colorpicker.rgb"></span>
+            <t-copy target-id="colors.colorpicker.rgb"></t-copy>
+          </p>
+          <p>
+            HEX: <span id="colors.colorpicker.hex"></span>
+            <t-copy target-id="colors.colorpicker.hex"></t-copy>
+          </p>
+          <p>
+            GML: <span id="colors.colorpicker.gml"></span>
+            <t-copy target-id="colors.colorpicker.gml"></t-copy>
+          </p>
         </div>
       </section>
       <section>
@@ -49,24 +64,42 @@
           </div>
         </div>
         <!-- RGB conversions -->
-        <p>HEX: <span id="colors.rgb.hex"></span></p>
-        <p>GML: <span id="colors.rgb.gml"></span></p>
+        <p>
+          HEX: <span id="colors.rgb.hex"></span>
+          <t-copy target-id="colors.rgb.hex"></t-copy>
+        </p>
+        <p>
+          GML: <span id="colors.rgb.gml"></span>
+          <t-copy target-id="colors.rgb.gml"></t-copy>
+        </p>
       </section>
       <section>
         <h2>HEX to others</h2>
         <!-- Input HEX -->
         <input type="text" id="colors.hex" />
         <!-- HEX conversions -->
-        <p>RGB: <span id="colors.hex.rgb"></span></p>
-        <p>GML: <span id="colors.hex.gml"></span></p>
+        <p>
+          RGB: <span id="colors.hex.rgb"></span>
+          <t-copy target-id="colors.hex.rgb"></t-copy>
+        </p>
+        <p>
+          GML: <span id="colors.hex.gml"></span>
+          <t-copy target-id="colors.hex.gml"></t-copy>
+        </p>
       </section>
       <section>
         <h2>GML to others</h2>
         <!-- Input GML -->
         <input type="text" id="colors.gml" />
         <!-- GML conversions -->
-        <p>RGB: <span id="colors.gml.rgb"></span></p>
-        <p>HEX: <span id="colors.gml.hex"></span></p>
+        <p>
+          RGB: <span id="colors.gml.rgb"></span>
+          <t-copy target-id="colors.gml.rgb"></t-copy>
+        </p>
+        <p>
+          HEX: <span id="colors.gml.hex"></span>
+          <t-copy target-id="colors.gml.hex"></t-copy>
+        </p>
       </section>
       <!-- End of changing this part -->
     </section>
@@ -213,5 +246,6 @@
       });
       // End of changing the javascript for the page
     </script>
+    <script></script>
   </body>
 </html>

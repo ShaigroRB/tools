@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--  Change the title -->
+    <title>VSCode tools</title>
+    <!-- End of changing the title -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../custom.js"></script>
+    <!-- Change css -->
+    <style>
+      .result textarea {
+        height: 4rem;
+        width: 60%;
+        resize: horizontal;
+      }
+      .inline {
+        display: inline-block;
+      }
+    </style>
+    <!-- End of changing css -->
+  </head>
+  <body class="container">
+    <nav class="navbar">
+      <header><a href="../index.html">Tools</a></header>
+      <ul>
+        <li><a href="../tools/colors.html">Colors</a></li>
+        <li><a href="../tools/vscode.html">VSCode</a></li>
+      </ul>
+    </nav>
+    <section class="content">
+      <!-- Change this part -->
+      <section>
+        <h2>Remove <code>"</code> and <code>\"</code></h2>
+        <div class="hstack vcenter">
+          <label for="vscode.removequotes">
+            Remove <code>"</code> and <code>\"</code>:
+          </label>
+          <input type="text" id="vscode.removequotes" />
+        </div>
+        <div class="result">
+          <label for="vscode.removequotes.result">Result:</label>
+          <textarea id="vscode.removequotes.result"></textarea>
+          <t-copy
+            target-id="vscode.removequotes.result"
+            class="inline"
+          ></t-copy>
+        </div>
+      </section>
+      <!-- End of changing this part -->
+    </section>
+
+    <footer class="footer"></footer>
+
+    <script>
+      // Change the javascript for the page
+      /* Retrieve HTML elements and define variables */
+      const removequotesInput = document.getElementById("vscode.removequotes");
+      const removequotesResult = document.getElementById(
+        "vscode.removequotes.result"
+      );
+
+      /* Types */
+
+      /* Functions */
+      /** @param {string} text */
+      function removequotes(text) {
+        return text.replace(/(^")|("$)/g, "");
+      }
+
+      /** @param {string} text */
+      function replaceEscapedQuotes(text) {
+        return text.replace(/\\\"/g, '"');
+      }
+
+      /* Event listeners */
+      removequotesInput.addEventListener("input", (event) => {
+        removequotesResult.value = replaceEscapedQuotes(
+          removequotes(event.target.value)
+        );
+      });
+
+      // End of changing the javascript for the page
+    </script>
+  </body>
+</html>

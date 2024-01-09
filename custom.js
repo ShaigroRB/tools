@@ -60,7 +60,11 @@ class TCopyButton extends HTMLElement {
 
         // Copy the text content of the target element
         if (targetElement) {
-          navigator.clipboard.writeText(targetElement.textContent).then(() => {
+          const valueToCopy =
+            targetElement.tagName === "TEXTAREA"
+              ? targetElement.value
+              : targetElement.textContent;
+          navigator.clipboard.writeText(valueToCopy).then(() => {
             // Display the notification
             this.shadowRoot.querySelector(".notification").style.display =
               "block";
